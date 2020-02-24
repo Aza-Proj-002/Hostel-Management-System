@@ -20,7 +20,6 @@ if (!isset($_SESSION['email'])) {
 
 <?php require_once 'header.php' ?>
     <div id="particles-js"></div>
-
     
     <div class="container-fluid header">
         <nav class="db f3 dt-l w-100 border-box pa3 ph5-l">
@@ -36,6 +35,7 @@ if (!isset($_SESSION['email'])) {
             </div>
         </nav>
     </div>
+
 
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>

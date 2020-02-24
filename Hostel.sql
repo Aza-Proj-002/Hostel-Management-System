@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 24, 2020 at 11:20 AM
+-- Generation Time: Feb 24, 2020 at 11:33 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -71,7 +71,9 @@ CREATE TABLE `adminlog` (
 INSERT INTO `adminlog` (`id`, `ipaddress`, `city`, `country`, `student_id`, `email`, `browser`, `name`, `logintime`) VALUES
 (1, '::1', 'Not Define', 'Not Define', 5, 'mundoh@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'EDWARD OLOO ODONDO', '2020-02-24 09:43:46'),
 (2, '::1', 'Not Define', 'Not Define', 6, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'Edward', '2020-02-24 10:00:59'),
-(3, '::1', 'Not Define', 'Not Define', 7, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'Edward', '2020-02-24 10:19:19');
+(3, '::1', 'Not Define', 'Not Define', 7, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'Edward', '2020-02-24 10:19:19'),
+(4, '::1', 'Not Define', 'Not Define', 7, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'Edward', '2020-02-24 10:29:30'),
+(5, '::1', 'Not Define', 'Not Define', 8, 'peter@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', 'Peter', '2020-02-24 10:31:54');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `admin_id`, `room_type`, `room_number`, `fees`, `createdat`, `updatedat`) VALUES
-(1, NULL, 'Double', 'A102', 1500.00, '2020-02-24 10:02:22', '2020-02-24 10:02:22');
+(1, NULL, 'Double', 'A102', 1500.00, '2020-02-24 10:02:22', '2020-02-24 10:02:22'),
+(2, NULL, 'Single', 'A133', 136559.00, '2020-02-24 10:28:38', '2020-02-24 10:28:38');
 
 -- --------------------------------------------------------
 
@@ -170,7 +173,36 @@ CREATE TABLE `student_register` (
 --
 
 INSERT INTO `student_register` (`student_id`, `name`, `username`, `email`, `phonenumber`, `course`, `gender`, `password`, `createdat`, `updatedat`) VALUES
-(7, 'Edward', 'Edu', 'edu@gmail.com', '0703960380', 'Graphics Design', 'Male', 'd0f7db40e698109f62a4de9e7b2b93dd', '2020-02-24 10:18:48', '2020-02-24 10:18:48');
+(7, 'Edward', 'Edu', 'edu@gmail.com', '0703960380', 'Graphics Design', 'Male', 'd0f7db40e698109f62a4de9e7b2b93dd', '2020-02-24 10:18:48', '2020-02-24 10:18:48'),
+(8, 'Peter', 'Petero', 'peter@gmail.com', '0703960380', 'Graphics', 'Male', 'd0f7db40e698109f62a4de9e7b2b93dd', '2020-02-24 10:31:01', '2020-02-24 10:31:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlog`
+--
+
+CREATE TABLE `userlog` (
+  `id` int(11) NOT NULL,
+  `ipaddress` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `browser` varchar(255) NOT NULL,
+  `logintime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userlog`
+--
+
+INSERT INTO `userlog` (`id`, `ipaddress`, `city`, `country`, `student_id`, `email`, `browser`, `logintime`) VALUES
+(1, '::1', 'Not Define', 'Not Define', 5, 'mundoh@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', '2020-02-24 09:43:46'),
+(2, '::1', 'Not Define', 'Not Define', 6, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', '2020-02-24 10:00:59'),
+(3, '::1', 'Not Define', 'Not Define', 7, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', '2020-02-24 10:19:19'),
+(4, '::1', 'Not Define', 'Not Define', 7, 'edu@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', '2020-02-24 10:29:30'),
+(5, '::1', 'Not Define', 'Not Define', 8, 'peter@gmail.com', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36', '2020-02-24 10:31:53');
 
 --
 -- Indexes for dumped tables
@@ -215,6 +247,12 @@ ALTER TABLE `student_register`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `userlog`
+--
+ALTER TABLE `userlog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -228,7 +266,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `adminlog`
 --
 ALTER TABLE `adminlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -246,13 +284,19 @@ ALTER TABLE `hostel_booking`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_register`
 --
 ALTER TABLE `student_register`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `userlog`
+--
+ALTER TABLE `userlog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
