@@ -3,7 +3,11 @@ if (isset($_SESSION['email'])){
     $userLoggedIn = $_SESSION['email'];
     $user_details_query = mysqli_query($conn, "SELECT * FROM student_register WHERE email = '$userLoggedIn'");
     $user = mysqli_fetch_array($user_details_query);
-}
+} 
+if (!isset($_SESSION['email'])) { 
+    $_SESSION['msg'] = "You have to log in first"; 
+    header('location: index.php'); 
+}  
 ?>
 <?php require_once 'header.php' ?>
     <div id="particles-js"></div>

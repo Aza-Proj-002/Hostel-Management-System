@@ -6,7 +6,10 @@ if (isset($_SESSION['username'])){
     $admin_details_query = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$adminLoggedIn'");
     $admin = mysqli_fetch_array($admin_details_query);
 }
-
+if (!isset($_SESSION['username'])) { 
+    $_SESSION['msg'] = "You have to log in first"; 
+    header('location: index.php'); 
+} 
 ?>
 <?php require_once 'header.php'; ?>
 <div id="particles-js"></div>

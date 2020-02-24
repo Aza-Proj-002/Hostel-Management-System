@@ -6,7 +6,10 @@ if (isset($_SESSION['email'])){
     $user_details_query = mysqli_query($conn, "SELECT * FROM student_register WHERE email = '$userLoggedIn'");
     $user = mysqli_fetch_array($user_details_query);
 }
-
+if (!isset($_SESSION['email'])) { 
+    $_SESSION['msg'] = "You have to log in first"; 
+    header('location: index.php'); 
+}  
 if(isset($_POST['submit'])){
 
     $RoomType = mysqli_real_escape_string($conn,$_POST['RoomType']);
@@ -115,7 +118,7 @@ if(isset($_POST['submit'])){
                  <select class="custom-select" name="RoomType" required>
                      <option selected disabled value="">Room Type</option>
                      <option value="single">Single</option>
-                     <option value="double">Double</option>
+                     <option value="double">Double</option> 
                  </select>
              </div>
 
