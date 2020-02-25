@@ -1,4 +1,5 @@
-<?php require_once 'db.php'; 
+<?php 
+require_once 'db.php'; 
 if (isset($_SESSION['email'])){
     $userLoggedIn = $_SESSION['email'];
     $user_details_query = mysqli_query($conn, "SELECT * FROM student_register WHERE email = '$userLoggedIn'");

@@ -135,8 +135,11 @@ if(isset($_POST['register'])){
                                 <option value="In what city were you born?">In what city were you born?</option>
                                 <option value="What is your favorite food?">What is your favorite food?</option>
                                 </select>
-                                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="answer" placeholder="Answer" required />
+                                
                             </div>
+                            <div class="mv3">
+                                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="answer" placeholder="Answer" required />
+                            </div>    
                         </fieldset>
                         <div class="">
                             <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" name="register" />

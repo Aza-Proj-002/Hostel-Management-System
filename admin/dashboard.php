@@ -35,7 +35,6 @@ if (!isset($_SESSION['username'])) {
     </div>
     
     <?php require_once 'sidebar.php'; ?>
-    
     <div class="col-md-9 ">
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>
