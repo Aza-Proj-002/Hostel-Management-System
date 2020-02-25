@@ -8,6 +8,8 @@ $phone_number = "";
 $course = "";
 $gender = "";
 $password = "";
+$question = "";
+$answer = "";
 $confirm_password = "";
 $error_array = array();
 
@@ -19,6 +21,8 @@ if(isset($_POST['register'])){
     $phone_number = mysqli_real_escape_string($conn,$_POST['phone_number']);
     $course = mysqli_real_escape_string($conn,$_POST['course']);
     $gender = mysqli_real_escape_string($conn,$_POST['gender']);
+    $question = mysqli_real_escape_string($conn,$_POST['question']);
+    $answer = mysqli_real_escape_string($conn,$_POST['answer']);
     $password = mysqli_real_escape_string($conn,$_POST['password']);
     $confirm_password = mysqli_real_escape_string($conn,$_POST['confirm_password']);
    
@@ -47,8 +51,8 @@ if(isset($_POST['register'])){
     if(empty($error_array)){
         $password = md5($password);
 
-        $sql = mysqli_query($conn, "INSERT INTO `student_register`(`name`,`username`,`email`,`phonenumber`,`course`,`gender`,`password`) 
-        VALUES ('$full_name','$username','$email','$phone_number','$course','$gender','$password')");
+        $sql = mysqli_query($conn, "INSERT INTO `student_register`(`name`,`username`,`email`,`phonenumber`,`course`,`gender`,`password`, `question`, `answer`) 
+        VALUES ('$full_name','$username','$email','$phone_number','$course','$gender','$password', '$question', '$answer')");
        
     array_push($error_array, "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>");
        
@@ -75,6 +79,7 @@ if(isset($_POST['register'])){
                     <form action="register.php" method="post">
                         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
                             <legend class="f1 fw6 ph0 mh0">Register</legend>
+                            <hr>
                             <div class="mt3">
                                 <!-- <label class="db fw6 lh-copy f6" htmlFor="full-name">Full Name</label> -->
                                 <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="full_name" name="full_name" placeholder="Your Full Name" required />
@@ -119,6 +124,18 @@ if(isset($_POST['register'])){
                             elseif(in_array("<div class='alert alert-danger' style='margin-top: 1rem'>Your password must be more than 6 characters</div>", $error_array)) echo "<div class='alert alert-danger' style='margin-top: 1rem'>Your password must be more than 6 characters</div>";
                             
                             ?>
+                            </div>
+                            <hr>
+                            <div class="mv3">
+                                <label class="db fw6 lh-copy f6">Security Question</label>
+                                <select class=" pa2 ba input-reset hover-bg-black hover-white  w-100" name="question" id="question" required>
+                                <option value="What is the name of your dog?">What is the name of your dog?</option>
+                                <option value="What is the name of your favorite teacher?">What is the name of your favorite teacher?</option>
+                                <option value="What is your maiden name?">What is your maiden name?</option>
+                                <option value="In what city were you born?">In what city were you born?</option>
+                                <option value="What is your favorite food?">What is your favorite food?</option>
+                                </select>
+                                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="answer" placeholder="Answer" required />
                             </div>
                         </fieldset>
                         <div class="">

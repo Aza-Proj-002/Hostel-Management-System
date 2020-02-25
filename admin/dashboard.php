@@ -33,6 +33,10 @@ if (!isset($_SESSION['username'])) {
             </div>
         </nav>
     </div>
+    
+    <?php require_once 'sidebar.php'; ?>
+    
+    <div class="col-md-9 ">
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>
         <div class=" alert alert-success">
@@ -45,9 +49,6 @@ if (!isset($_SESSION['username'])) {
         </div>
         <?php endif ?>
     </div>
-    <?php require_once 'sidebar.php'; ?>
-    
-    <div class="col-md-9 ">
                 <div class="container">
                     <h1>Total Students</h1>
 

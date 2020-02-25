@@ -35,8 +35,8 @@ if (!isset($_SESSION['email'])) {
             </div>
         </nav>
     </div>
-
-
+    
+    <?php require_once 'sidebar.php' ?>
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>
         <div class=" alert alert-success">
@@ -49,8 +49,6 @@ if (!isset($_SESSION['email'])) {
         </div>
         <?php endif ?>
     </div>
-    <?php require_once 'sidebar.php' ?>
-    
         </div>
         </div>
  
