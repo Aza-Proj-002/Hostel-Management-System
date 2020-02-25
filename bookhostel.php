@@ -74,7 +74,8 @@ if(isset($_POST['submit'])){
         <?php $sql = "SELECT * FROM student_register WHERE email = '$userLoggedIn'";
                         $query = $conn->query($sql);
                         while($row = $query->fetch_assoc()){ ?>
-
+<?php if(in_array('<div class="alert alert-success" role="alert">Hostel Booked Successfully</div>', $error_array)) echo '<div class="alert alert-success" role="alert">Hostel Booked Successfully</div>';
+                            ?>
         <div class="form-row">
             <div class="col-md-2 mb-3">
                 <label for="validationCustom01">Student Id</label>
@@ -163,8 +164,7 @@ if(isset($_POST['submit'])){
 
         <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit" name="submit">Submit
             form</button> <br>
-        <?php if(in_array('<div class="alert alert-success" role="alert">Hostel Booked Successfully</div>', $error_array)) echo '<div class="alert alert-success" role="alert">Hostel Booked Successfully</div>';
-                            ?>
+        
     </form>
     </div>
     </div>
