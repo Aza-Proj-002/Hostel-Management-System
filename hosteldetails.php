@@ -45,10 +45,11 @@ if (!isset($_SESSION['email'])) {
                 <th scope="col">Email</th>
                 <th scope="col">Room Number</th>
                 <th scope="col">Duration in Months</th>
-                <th scope="col">Fees</th>
+                <th scope="col">Fees Per Months</th>
+                <th scope="col">Total Fees</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Course</th>gi
+                <th scope="col">Course</th>
                 <th scope="col">Room Type</th>
             </tr>
         </thead>
@@ -61,6 +62,7 @@ if (!isset($_SESSION['email'])) {
                 <td><?php echo $row["email"]; ?></td>
                 <td><?php echo $row["room_number"]; ?></td>
                 <td><?php echo $row["duration"]; ?></td>
+                <td><?php echo $row["feespermonth"]; ?></td>
                 <td><?php echo $row["fees"]; ?></td>
                 <td><?php echo $row["phonenumber"]; ?></td>
                 <td><?php echo $row["gender"]; ?></td>
