@@ -4,7 +4,7 @@
 
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
-		$coursecode = $_POST['coursecode'];
+		$coursecode = $_POST['coursecode']; 
 		$coursename = $_POST['coursename'];
 		$duration = $_POST['duration'];
 		$sql = "UPDATE course SET course_code = '$coursecode', course_name = '$coursename', duration = '$duration'  WHERE course_id = '$id'";

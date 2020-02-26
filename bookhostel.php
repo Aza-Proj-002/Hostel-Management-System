@@ -113,10 +113,14 @@ if(isset($_POST['submit'])){
         <div class="form-row">
         <div class="col-md-2 mb-3">
                 <label for="validationCustom04">Room Type</label>
+                
                 <select class="custom-select" id="RoomType" name="RoomType" onchange="makeSubmenu(this.value)" required>
-                    <option selected disabled value="">Room Type</option>
-                    <option value="Single">Single</option>
-                    <option value="Double">Double</option>
+                <option selected disabled value="">Room Type</option>
+                <?php $sql = "SELECT * FROM rooms";
+                        $query = $conn->query($sql);
+                        while($row = $query->fetch_assoc()){ ?>
+                    <option><?php echo $row['room_type'] ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="col-md-2 mb-3">
@@ -133,7 +137,7 @@ if(isset($_POST['submit'])){
                     <option></option>
                 </select>
             </div>
-
+                        
             <div class="col-md-3 mb-3">
                 <label for="validationCustom05">Duration in months</label>
                 <select class="custom-select" name="Duration" onchange="calculateAmount(this.value)" required>
@@ -170,15 +174,16 @@ if(isset($_POST['submit'])){
     </div>
 </main>
 <script type="text/javascript">
+
     var subcategory = {
-        Single: ["A101", "A102", "A103"],
+        Single: ["123"],
         Double: ["D201", "B202", "B203"]
     }
     var subPrice = {
         Single: ["5000"],
         Double: ["10000"]
     }
-
+   
     function makeSubmenu(value) {
         if (value.length == 0) document.getElementById("RoomNumber").innerHTML = "<option></option>";
         else {

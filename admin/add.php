@@ -2,7 +2,7 @@
 	
 	include_once('../db.php');
 
-	if(isset($_POST['add'])){
+	if(isset($_POST['add'])){ 
 		$coursecode = $_POST['coursecode']; 
 		$coursename = $_POST['coursename'];
 		$duration = $_POST['duration'];
