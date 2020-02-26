@@ -39,12 +39,11 @@ if (!isset($_SESSION['username'])) {
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>
         <div class=" alert alert-success">
-            <h3>
+     
                 <?php
                         echo $_SESSION['alert'].$admin['name'];
                         unset($_SESSION['alert']); 
                     ?>
-            </h3>
         </div>
         <?php endif ?>
     </div>

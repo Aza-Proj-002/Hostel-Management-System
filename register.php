@@ -4,7 +4,7 @@ require_once 'db.php';
 $full_name = ""; 
 $username = "";
 $email = "";
-$phone_number = "";
+$phone_number = ""; 
 $course = "";
 $gender = "";
 $password = "";
@@ -79,6 +79,7 @@ if(isset($_POST['register'])){
                     <form action="register.php" method="post">
                         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
                             <legend class="f1 fw6 ph0 mh0">Register</legend>
+                            <?php if(in_array("<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>", $error_array)) echo "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>";  ?>
                             <hr>
                             <div class="mt3">
                                 <!-- <label class="db fw6 lh-copy f6" htmlFor="full-name">Full Name</label> -->
@@ -143,7 +144,7 @@ if(isset($_POST['register'])){
                         </fieldset>
                         <div class="">
                             <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" name="register" />
-                            <?php if(in_array("<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>", $error_array)) echo "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>";  ?>
+                            
                         </div>
                     </form>
                     <div class="lh-copy mt3">

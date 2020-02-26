@@ -42,17 +42,17 @@ if (!isset($_SESSION['email'])) {
     <div class="container">
         <?php if (isset($_SESSION['alert'])) : ?>
         <div class=" alert alert-success">
-            <h3>
+           
                 <?php
                         echo $_SESSION['alert'].$user['name']; 
                         unset($_SESSION['alert']); 
                     ?>
-            </h3>
+
         </div>
         <?php endif ?>
     </div>
-    <div class="row" style="padding: 2rem;">
-        <div class="col-md-6 shadow-5" style="padding: 2rem;">
+    <div class="row" style="padding: 2rem; ">
+        <div class="col-md-5 shadow-5" style="padding: 2rem; margin: 2rem;">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page"> My Profile Details</li>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['email'])) {
                 <a class="btn btn-light btn-lg" href="studentdetails.php">View Profile Details</a>
             </nav>
         </div>
-        <div class="col-md-6 shadow-5" style="padding: 2rem;">
+        <div class="col-md-5 shadow-5" style="padding: 2rem; margin: 2rem;">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">Room Details</li>

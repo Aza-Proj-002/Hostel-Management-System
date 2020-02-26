@@ -37,47 +37,100 @@ if (!isset($_SESSION['email'])) {
                 while($row = $result->fetch_assoc()) {  
                        
             ?>
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Student ID</th>
-                <th scope="col">StudentName</th>
-                <th scope="col">Email</th>
-                <th scope="col">Room Number</th>
-                <th scope="col">Duration in Months</th>
-                <th scope="col">Fees Per Months</th>
-                <th scope="col">Total Fees</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Course</th>
-                <th scope="col">Room Type</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr>
-           
-                <th scope="row"><?php echo $row["student_id"]; ?></th>
-                <td><?php echo $row["student_name"]; ?></td>
-                <td><?php echo $row["email"]; ?></td>
-                <td><?php echo $row["room_number"]; ?></td>
-                <td><?php echo $row["duration"]; ?></td>
-                <td><?php echo $row["feespermonth"]; ?></td>
-                <td><?php echo $row["fees"]; ?></td>
-                <td><?php echo $row["phonenumber"]; ?></td>
-                <td><?php echo $row["gender"]; ?></td>
-                <td><?php echo $row["course"]; ?></td>
-                <td><?php echo $row["room_type"]; ?></td>
-                <?php     }
+
+<div class="card-deck">
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Student Id</h5>
+                    <p class="card-text"><?php echo $row["student_id"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Booking ID</h5>
+                    <p class="card-text"><?php echo $row["booking_id"]; ?></p>
+                  </div>
+            </div>
+
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Student Name</h5>
+                    <p class="card-text"><?php echo $row["student_name"]; ?></p>
+                  </div>
+            </div>
+        </div>
+        <div class="card-deck">
+
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Room Number</h5>
+                    <p class="card-text"><?php echo $row["room_number"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Duration in Months</h5>
+                    <p class="card-text"><?php echo $row["duration"]; ?></p>
+                  </div>
+            </div>
+            
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Fees Per Month</h5>
+                    <p class="card-text"><?php echo $row["feespermonth"]; ?></p>
+                  </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Total Fees</h5>
+                    <p class="card-text"><?php echo $row["fees"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Room Type</h5>
+                    <p class="card-text"><?php echo $row["room_type"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Course</h5>
+                    <p class="card-text"><?php echo $row["course"]; ?></p>
+                  </div>
+            </div>
+        </div>
+        <div class="card-deck">
+        <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Email</h5>
+                    <p class="card-text"><?php echo $row["email"]; ?></p>
+                  </div>
+            </div>
+
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Phone Number</h5>
+                    <p class="card-text"><?php echo $row["phonenumber"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Gender</h5>
+                    <p class="card-text"><?php echo $row["gender"]; ?></p>
+                  </div>
+            </div>
+              <?php     }
                    } else {
                        echo "No Details Available";
                    }
                    ?>
-            </tr>
-            <tr>
-
-        </tbody>
-    </table>
+            
+        </div>
+              
+            
     
  </main>
                 </div>

@@ -92,6 +92,7 @@ if(isset($_POST['register'])){
             <form action="registerstudent.php" method="post">
                 <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
                     <legend class="f1 fw6 ph0 mh0">Register</legend>
+                    <?php if(in_array("<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull</div>", $error_array)) echo "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull</div>";  ?>
                     <div class="mt3">
                         <!-- <label class="db fw6 lh-copy f6" htmlFor="full-name">Full Name</label> -->
                         <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
@@ -145,11 +146,26 @@ if(isset($_POST['register'])){
                             
                                         ?>
                     </div>
+                    <hr>
+                            <div class="mv3">
+                                <label class="db fw6 lh-copy f6">Security Question</label>
+                                <select class=" pa2 ba input-reset hover-bg-black hover-white  w-100" name="question" id="question" required>
+                                <option value="What is the name of your dog?">What is the name of your dog?</option>
+                                <option value="What is the name of your favorite teacher?">What is the name of your favorite teacher?</option>
+                                <option value="What is your maiden name?">What is your maiden name?</option>
+                                <option value="In what city were you born?">In what city were you born?</option>
+                                <option value="What is your favorite food?">What is your favorite food?</option>
+                                </select>
+                                
+                            </div>
+                            <div class="mv3">
+                                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="answer" placeholder="Answer" required />
+                            </div>    
                 </fieldset>
                 <div class="">
                     <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit"
                         value="Register Student" name="register" />
-                    <?php if(in_array("<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull</div>", $error_array)) echo "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull</div>";  ?>
+                    
                 </div>
             </form>
         </div>

@@ -32,8 +32,9 @@ if (!isset($_SESSION['username'])) {
 </div>
 <?php require_once 'sidebar.php'; ?>
 <div class="col-md-9">
-<table class="table table-dark">
-    <thead class="thead-dark">
+<h1 class="page-header text-center">Acess Log</h1>
+<table class="table">
+    <thead>
         <tr>
             <th scope="col">Student Id</th>
             <th scope="col">Name</th>

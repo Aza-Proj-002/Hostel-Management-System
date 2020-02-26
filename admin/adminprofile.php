@@ -34,6 +34,9 @@ if (!isset($_SESSION['username'])) {
 <div class="col-md-9">
 
 <h3 class="text-center">Admin Details</h3>
+
+
+<div class="card-deck">
 <?php 
                 
                 $sql = "SELECT *  FROM admin WHERE username = '$adminLoggedIn'";
@@ -44,46 +47,55 @@ if (!isset($_SESSION['username'])) {
                     while($row = $result->fetch_assoc()) {  
                         
                         ?>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Name</h5>
+                    <p class="card-text"><?php echo $row['name']; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Email</h5>
+                    <p class="card-text"><?php echo $row['email']; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Username</h5>
+                    <p class="card-text"><?php echo $row['username']; ?></p>
+                  </div>
+            </div>
+        </div>
+        <div class="card-deck">
 
-<form class="needs-validation" novalidate>
-    <div class="form-row">
-        <input type="hidden" class="form-control" name="id" value="<?php echo $row['admin_id']; ?>">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom01">Name</label>
-            <input type="text" class="form-control" value="<?php echo $row['name']; ?>" disabled>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Email</label>
-            <input type="email" class="form-control" value="<?php echo $row['email']; ?>" disabled>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustomUsername">Username</label>
-            <input type="text" class="form-control" value="<?php echo $row['username']; ?>" disabled>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom03">Phone</label>
-            <input type="text" class="form-control" value="<?php echo $row['phone']; ?>" disabled>
-
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom04">Gender</label>
-            <input type="text" class="form-control" value="<?php echo $row['gender']; ?>" disabled>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom05">Designation</label>
-            <input type="text" class="form-control" value="<?php echo $row['designation']; ?>" disabled>
-
-        </div>
-    </div>
-</form>
-<?php     }
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Phone Number</h5>
+                    <p class="card-text"><?php echo $row['phone']; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Gender</h5>
+                    <p class="card-text"><?php echo $row["gender"]; ?></p>
+                  </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Designation</h5>
+                    <p class="card-text"><?php echo $row['designation']; ?></p>
+                  </div>
+            </div>
+            <?php     }
                     } else {
                         echo "Something went wrong";
                     }
                     ?>
-<h3 class="text-center" style="margin-top: 2rem;">Change Password</h3>
+        </div>                     
+
+        <article class="br3 ba b--black-10 mv4 w-100 w-50-m w-50-l mw9 shadow-5 center">
+            <main class="pa4 black-80">
+                <div class="measure center">
 <?php
                     if(isset($_POST['updatePassword'])) {
 
@@ -124,6 +136,7 @@ if (!isset($_SESSION['username'])) {
 
                     ?>
 <form action="adminprofile.php" method="post">
+<h3 class="text-center f1 fw6 ph0 mh0">Change Password</h3>
     <div class="col-sm-12">
         <div class="row d-flex justify-content-center">
             <?php
@@ -147,31 +160,26 @@ if (!isset($_SESSION['username'])) {
                         }
 			            ?>
         </div>
-        <div class="form-row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> Old Password</label>
-                    <input type="password" name="old_password" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> New Password</label>
-                    <input type="password" name="new_password_1" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Confirm New Password</label>
-                    <input type="password" name="new_password_2" class="form-control">
-                </div>
-            </div>
-        </div>
-
-        <button class="btn btn-primary btn-lg btn-block" name="updatePassword" type="submit">Update
-            Password</button> <br>
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+                <div class="mv3">
+                    <input type="password" class="form-control b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" name="old_password" placeholder="Old Password" required>
+              </div>
+              <div class="mv3">
+                <input type="password" class="form-control b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" name="new_password_1" placeholder="New Password" required>
+              </div>
+              <div class="mv3">
+                <input type="password" class="form-control b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" name="new_password_2" placeholder="Confirm Password" required>
+              </div>
+              <div class="mv3">
+                <button class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns" type="submit" name="updatePassword">Update
+                    Password</button>
+              </div>
+              </fieldset>
 
 </form>
+</div>
+</main>
+    </article>
 </div>
 </div>
                     </div>

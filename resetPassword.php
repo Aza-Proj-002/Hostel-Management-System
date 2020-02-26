@@ -3,10 +3,11 @@ require_once 'db.php';
 
 if (isset($_SESSION['email'])){
     $userLoggedIn = $_SESSION['email'];
-    $user_details_query = mysqli_query($conn, "SELECT * FROM student_register WHERE email = '$userLoggedIn'");
-    $user = mysqli_fetch_array($user_details_query);
 } 
-
+if (!isset($_SESSION['email'])) { 
+    $_SESSION['msg'] = "You have to log in first"; 
+    header('location: index.php'); 
+} 
 if(isset($_POST['submit'])) {
 
     $new_password_1 = strip_tags($_POST['new_password_1']);
@@ -91,7 +92,7 @@ if(isset($_POST['submit'])) {
 						".$_SESSION['password_success']."
 					</div>
 					";
-					unset($_SESSION['password_success']);
+					unset($_SESSION['password_success']); 
 				}
 			?>
             </div>

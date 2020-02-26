@@ -162,7 +162,7 @@ if(isset($_POST['submit'])){
         <?php if(in_array('<div class="alert alert-danger" role="alert">Please fill the empty spaces!</div>', $error_array)) echo '<div class="alert alert-danger" role="alert">Please fill the empty spaces!</div>';
                             ?>
 
-        <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit" name="submit">Submit
+        <button class="btn btn-info btn-lg " type="submit" id="submit" name="submit">Submit
             form</button> <br>
         
     </form>
