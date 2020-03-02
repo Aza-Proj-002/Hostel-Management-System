@@ -11,7 +11,7 @@ if(isset($_POST['login'])) {
     $password = md5($_POST['password']); //Get password
 
 	$check_database_query = mysqli_query($conn, "SELECT * FROM student_register WHERE email='$email' AND password='$password'");
-	$check_login_query = mysqli_num_rows($check_database_query);
+	$check_login_query = mysqli_num_rows($check_database_query); 
 
 	if($check_login_query == 1) {
         $_SESSION['email'] = $email;
@@ -69,7 +69,7 @@ if(isset($_POST['login'])) {
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
  
-<body> 
+<body>  
     <div id="particles-js"></div>
  
     <nav class="db f3 dt-l w-100 border-box pa3 ph5-l">

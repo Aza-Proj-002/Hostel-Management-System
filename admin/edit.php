@@ -12,7 +12,7 @@
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Course updated successfully';
 		}
-		
+		 
 		 
 		else{ 
 			$_SESSION['error'] = 'Something went wrong in updating course';

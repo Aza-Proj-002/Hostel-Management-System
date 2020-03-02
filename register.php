@@ -19,7 +19,9 @@ if(isset($_POST['register'])){
     $username = mysqli_real_escape_string($conn,$_POST['username']);
     $email = mysqli_real_escape_string($conn,$_POST['email']);
     $phone_number = mysqli_real_escape_string($conn,$_POST['phone_number']);
-    $course = mysqli_real_escape_string($conn,$_POST['course']);
+    $course = mysqli_real_escape_string($conn,$_POST['coursename']);
+    $coursecode = mysqli_real_escape_string($conn,$_POST['coursecode']);
+    $duration = mysqli_real_escape_string($conn,$_POST['duration']);
     $gender = mysqli_real_escape_string($conn,$_POST['gender']);
     $question = mysqli_real_escape_string($conn,$_POST['question']);
     $answer = mysqli_real_escape_string($conn,$_POST['answer']);
@@ -51,8 +53,8 @@ if(isset($_POST['register'])){
     if(empty($error_array)){
         $password = md5($password);
 
-        $sql = mysqli_query($conn, "INSERT INTO `student_register`(`name`,`username`,`email`,`phonenumber`,`course`,`gender`,`password`, `question`, `answer`) 
-        VALUES ('$full_name','$username','$email','$phone_number','$course','$gender','$password', '$question', '$answer')");
+        $sql = mysqli_query($conn, "INSERT INTO `student_register`(`name`,`username`,`email`,`phonenumber`,`course`,`coursecode`,`duration`,`gender`,`password`, `question`, `answer`) 
+        VALUES ('$full_name','$username','$email','$phone_number','$course','$coursecode','$duration','$gender','$password', '$question', '$answer')");
        
     array_push($error_array, "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>");
        
@@ -82,30 +84,50 @@ if(isset($_POST['register'])){
                             <?php if(in_array("<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>", $error_array)) echo "<div class='alert alert-success' style='margin-top: 1rem'>Registration Successfull, Proceed to Login</div>";  ?>
                             <hr>
                             <div class="mt3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="full-name">Full Name</label> -->
+                                
                                 <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="full_name" name="full_name" placeholder="Your Full Name" required />
                             </div>
                             <div class="mt3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="user-name">Username</label> -->
+                                
                                 <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="username" name="username" placeholder="Username" required />
                             </div>
                             <div class="mt3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="email-address">Email</label> -->
+                               
                                 <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email" placeholder="Email" required />
                                 <?php if(in_array('<div class="alert alert-danger" style="margin-top: 1rem" role="alert">This email is already being used</div>', $error_array)) echo '<div class="alert alert-danger" style="margin-top: 1rem" role="alert">This email is already being used</div>';
                             elseif(in_array('<div class="alert alert-danger" style="margin-top: 1rem" role="alert">Invalid format</div>', $error_array)) echo '<div class="alert alert-danger" style="margin-top: 1rem" role="alert">Invalid format</div>';
                             ?>
                             </div>
                             <div class="mt3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="phone-number">Phone Number</label> -->
+                                
                                 <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="phone_number" name="phone_number" placeholder="Phone Number" required />
                             </div>
                             <div class="mt3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="course">Course</label> -->
-                                <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="course" name="course" placeholder="Course" required />
+                            <select class="custom-select" id="coursename" name="coursename" required>
+                            <option selected disabled>Select Course</option>
+                            <?php 
+                            $result = mysqli_query($conn,"SELECT * FROM course");
+                            while($row = mysqli_fetch_array($result)) {
+                            ?>
+                            
+                            <option value="<?php echo $row["course_id"];?>"><?php echo $row["course_name"];?></option>
+                            <?php } ?>
+
+                            </select>
+                            </div>
+                            <div class="mt3">
+                            <select class="custom-select" id="coursecode" name="coursecode" required>
+                            <option value="" disabled selected>Course Code</option>
+                            <option></option>
+                            </select>
+                            </div>
+                            <div class="mt3">
+                            <select class="custom-select" id="duration" name="duration" required>
+                            <option value="" disabled selected>Course Duration</option>
+                            <option></option>
+                            </select>
                             </div>
                             <div class="mt3 ">
-                                <!-- <p>Gender:</p> -->
                                 <select class=" pa2 ba input-reset hover-bg-black hover-white  w-100 " name="gender" id="" required>
                                 <option selected>Choose Gender...</option>
                                 <option value="Male">Male</option>
@@ -115,11 +137,11 @@ if(isset($_POST['register'])){
                             </div>
 
                             <div class="mv3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="password">Password</label> -->
+                                
                                 <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password" placeholder="Password" required />
                             </div>
                             <div class="mv3">
-                                <!-- <label class="db fw6 lh-copy f6" htmlFor="confirm-password">Confirm Password</label> -->
+                                
                                 <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="confirm_password" placeholder="Confirm Password" required />
                                 <?php if(in_array("<div class='alert alert-danger' style='margin-top: 1rem'>Your passwords do not match. please type carefully.</div>", $error_array)) echo "<div class='alert alert-danger' style='margin-top: 1rem'>Your passwords do not match. please type carefully.</div>";
                             elseif(in_array("<div class='alert alert-danger' style='margin-top: 1rem'>Your password must be more than 6 characters</div>", $error_array)) echo "<div class='alert alert-danger' style='margin-top: 1rem'>Your password must be more than 6 characters</div>";
@@ -154,5 +176,41 @@ if(isset($_POST['register'])){
             </main>
         </article>
 
-
+        <script>
+        $(document).ready(function() {
+            $('#coursename').on('change', function() {
+                    var course_code = this.value;
+                    $.ajax({
+                        url: "course_cat.php",
+                        type: "POST",
+                        data: {
+                            course_code
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                            $("#coursecode").html(dataResult);
+                        },
+                      
+                    });
+                
+                
+            });
+            $('#coursename').on('change', function() {
+                    var duration = this.value;
+                    $.ajax({
+                        url: "course_cat.php",
+                        type: "POST",
+                        data: {
+                            duration
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                            $("#duration").html(dataResult);
+                        }
+                    });
+                
+                
+            });
+        });
+        </script>
         <?php require_once 'footer.php' ?>

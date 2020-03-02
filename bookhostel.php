@@ -112,27 +112,27 @@ if(isset($_POST['submit'])){
         
         <div class="form-row">
         <div class="col-md-2 mb-3">
-                <label for="validationCustom04">Room Type</label>
-                
-                <select class="custom-select" id="RoomType" name="RoomType" onchange="makeSubmenu(this.value)" required>
-                <option selected disabled value="">Room Type</option>
-                <?php $sql = "SELECT * FROM rooms";
-                        $query = $conn->query($sql);
-                        while($row = $query->fetch_assoc()){ ?>
-                    <option><?php echo $row['room_type'] ?></option>
-                    <?php } ?>
+                <label>Room Type</label>
+                <select class="custom-select" id="RoomType" name="RoomType" required>
+                <option selected disabled value="">Select Room Type</option>
+                <?php 
+                $result = mysqli_query($conn,"SELECT * FROM rooms");
+                while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["room_id"];?>"><?php echo $row["room_type"];?></option>
+                <?php } ?>
                 </select>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="validationCustom03">Room Number</label>
-                <select class="custom-select" name="RoomNumber" id="RoomNumber" size="1" required>
+                <label>Room Number</label>
+                <select class="custom-select" name="RoomNumber" id="RoomNumber" required>
                     <option value="" disabled selected>Choose Room Number</option>
                     <option></option>
                 </select>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="validationCustom03">Fees Per Month</label>
-                <select class="custom-select" name="RoomFees" id="RoomFees" size="1" required>
+                <label>Fees Per Month</label>
+                <select class="custom-select" name="RoomFees" id="RoomFees" required>
                     <option value="" disabled selected>Fees Per Month</option>
                     <option></option>
                 </select>
@@ -173,44 +173,50 @@ if(isset($_POST['submit'])){
     </div>
     </div>
 </main>
-<script type="text/javascript">
 
-    var subcategory = {
-        Single: ["123"],
-        Double: ["D201", "B202", "B203"]
-    }
-    var subPrice = {
-        Single: ["5000"],
-        Double: ["10000"]
-    }
-   
-    function makeSubmenu(value) {
-        if (value.length == 0) document.getElementById("RoomNumber").innerHTML = "<option></option>";
-        else {
-            var numberOptions = "";
-            for (categoryId in subcategory[value]) {
-                numberOptions += "<option>" + subcategory[value][categoryId] + "</option>";
-            }
-            document.getElementById("RoomNumber").innerHTML = numberOptions;
-        }
+<script>
+$(document).ready(function() {
+	$('#RoomType').on('change', function() {
+			var room_number = this.value;
+			$.ajax({
+				url: "room_cat.php",
+				type: "POST",
+				data: {
+					room_number
+				},
+				cache: false,
+				success: function(dataResult){
+					$("#RoomNumber").html(dataResult);
+				}
+			});
+		
+		
+	});
+    $('#RoomNumber').on('change', function() {
+			var room_fees = this.value;
+			$.ajax({
+				url: "room_cat.php",
+				type: "POST",
+				data: {
+					room_fees
+				},
+				cache: false,
+				success: function(dataResult){
+					$("#RoomFees").html(dataResult);
+				}
+			});
+		
+		
+	});
+});
 
-        if (value.length == 0) document.getElementById("RoomFees").innerHTML = "<option></option>";
-        else {
-            var feesOptions = "";
-            for (categoryId in subPrice[value]) {
-                feesOptions += "<option>" + subPrice[value][categoryId] + "</option>";
-            }
-            document.getElementById("RoomFees").innerHTML = feesOptions;
-        }
-
-    }
-
-    function calculateAmount(val) {
-        feesPerMonth = document.getElementById("RoomFees").value;
+function calculateAmount(val) {
+        var feesPerMonth = document.getElementById("RoomFees").value;
         var tot_price = val * feesPerMonth;
         var divobj = document.getElementById('fees');
         divobj.value = tot_price;
     }
 </script>
+
 
 <?php require_once 'footer.php' ?>
