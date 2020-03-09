@@ -179,6 +179,9 @@ if(isset($_POST['register'])){
         <script>
         $(document).ready(function() {
             $('#coursename').on('change', function() {
+
+                // var course_name = $("#coursename option:selected").text();
+                // alert("Selected Option Text: "+course_name);
                     var course_code = this.value;
                     $.ajax({
                         url: "course_cat.php",
@@ -189,11 +192,11 @@ if(isset($_POST['register'])){
                         cache: false,
                         success: function(dataResult){
                             $("#coursecode").html(dataResult);
+                            // alert(dataResult);
+                            
                         },
                       
                     });
-                
-                
             });
             $('#coursename').on('change', function() {
                     var duration = this.value;
@@ -212,5 +215,17 @@ if(isset($_POST['register'])){
                 
             });
         });
+
+        // $(document).ready(function(){
+
+        // $("select.custom-select").change(function(){
+
+        //     var selectedCountry = $(this).children("option:selected").text();
+
+        //     alert("You have selected the country - " + selectedCountry);
+
+        // });
+
+        // });
         </script>
         <?php require_once 'footer.php' ?>

@@ -37,11 +37,18 @@ if(isset($_POST['login'])) {
         $name= $user['name'];
         $browser = $_SERVER['HTTP_USER_AGENT'];
 
-        $sql = mysqli_query($conn, "INSERT INTO `userlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`) 
-        VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser')");
+        // $sql = mysqli_query($conn, "INSERT INTO `userlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`) 
+        // VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser')");
 
-        $sql = mysqli_query($conn, "INSERT INTO `adminlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`, `name`) 
-        VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser', '$name')");
+        // $sql = mysqli_query($conn, "INSERT INTO `adminlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`, `name`) 
+        // VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser', '$name')");
+
+        $error_message = date("F j, Y, g:i a").", Student Id: "."$student_id".", Email: "."$email".", Name: "."$name".", IP_Address: "."$ip_address".", Browser: "."$browser".", City: "."$city".", Country: "."$country".PHP_EOL; 
+  
+        $log_file = "access.log"; 
+        
+        error_log($error_message, 3, $log_file); 
+        
   
 	}
 	else {

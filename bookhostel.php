@@ -182,7 +182,7 @@ $(document).ready(function() {
 				url: "room_cat.php",
 				type: "POST",
 				data: {
-					room_number
+					room_number 
 				},
 				cache: false,
 				success: function(dataResult){
@@ -211,7 +211,7 @@ $(document).ready(function() {
 });
 
 function calculateAmount(val) {
-        var feesPerMonth = document.getElementById("RoomFees").value;
+        var feesPerMonth = $("#RoomFees option:selected").text();
         var tot_price = val * feesPerMonth;
         var divobj = document.getElementById('fees');
         divobj.value = tot_price;

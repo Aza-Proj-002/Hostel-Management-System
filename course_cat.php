@@ -13,4 +13,9 @@
 $result = mysqli_query($conn,"SELECT * FROM course where course_id=$duration");
 while($row = mysqli_fetch_array($result)) { ?>
 	<option value="<?php echo $row["course_id"];?>"><?php echo $row["duration"];?></option>
-<?php } ?>
+<?php } ?> 
+
+<?php
+   $a =isset($_POST['id1'])?$_POST['id1']:'not yet';
+   echo $a ;
+   ?>
