@@ -32,38 +32,25 @@ if (!isset($_SESSION['username'])) {
 </div>
 <?php require_once 'sidebar.php'; ?>
 <div class="col-md-9">
-<h1 class="page-header text-center">Acess Log</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Student Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">IP Address</th>
-            <th scope="col">Browser</th>
-            <th scope="col">Login Time</th>
-            <th scope="col">City</th>
-            <th scope="col">Country</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $sql = "SELECT * FROM adminlog";
-                        $query = $conn->query($sql);
-                        while($row = $query->fetch_assoc()){ ?>
-        <tr>
-            <th scope="row"><?php echo $row['student_id'] ?></th>
-            <td><?php echo $row['name'] ?></td>
-            <td><?php echo $row['email'] ?></td>
-            <td><?php echo $row['ipaddress'] ?></td>
-            <td><?php echo $row['browser'] ?></td>
-            <td><?php echo $row['logintime'] ?></td>
-            <td><?php echo $row['city'] ?></td>
-            <td><?php echo $row['country'] ?></td>
-        </tr>
-        <?php } ?>
-    </tbody>
+<h1 class="page-header text-center">Access Log</h1>
+<div class="container-fluid">
+    <?php 
+    
+    $filestring = file_get_contents("../access.log");
+    $filearray = explode("\n", $filestring);
 
-</table>
+    while (list($var, $val) = each($filearray)) {
+        ++$var;
+        $val = trim($val); ?>
+
+        <div style="padding: .6rem;">
+            <?php print "$val"; ?>
+        </div>
+        <?php
+        
+    }
+    ?>
+    </div>
 </div>
                         </div>
                         </div>

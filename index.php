@@ -37,17 +37,46 @@ if(isset($_POST['login'])) {
         $name= $user['name'];
         $browser = $_SERVER['HTTP_USER_AGENT'];
 
-        // $sql = mysqli_query($conn, "INSERT INTO `userlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`) 
-        // VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser')");
-
-        // $sql = mysqli_query($conn, "INSERT INTO `adminlog`(`ipaddress`, `city`, `country`, `student_id`, `email`, `browser`, `name`) 
-        // VALUES ( '$ip_address', '$city', '$country', '$student_id', '$email', '$browser', '$name')");
-
         $error_message = date("F j, Y, g:i a").", Student Id: "."$student_id".", Email: "."$email".", Name: "."$name".", IP_Address: "."$ip_address".", Browser: "."$browser".", City: "."$city".", Country: "."$country".PHP_EOL; 
   
         $log_file = "access.log"; 
         
         error_log($error_message, 3, $log_file); 
+
+        $logfile_dir = "user.log"; 
+        $logfile = $logfile_dir . "php_" . $email . ".log";
+    
+        function error_handler($errno, $errstr, $errfile, $errline)
+        {
+            global $logfile_dir, $logfile;
+    
+        
+    
+            $filename = basename($errfile);
+    
+            switch ($errno) {
+                case E_USER_ERROR:
+                    file_put_contents($logfile, "  [$errno] $errstr\n", FILE_APPEND | LOCK_EX);
+                    exit(1);
+                    break;
+    
+                case E_USER_WARNING:
+                    file_put_contents($logfile, " $errstr\n", FILE_APPEND | LOCK_EX);
+                    break;
+    
+                case E_USER_NOTICE:
+                    file_put_contents($logfile, " $errstr\n", FILE_APPEND | LOCK_EX);
+                    break;
+    
+                default:
+                    file_put_contents($logfile, " $errstr\n", FILE_APPEND | LOCK_EX);
+                    break;
+            }
+        }
+    
+        set_error_handler("error_handler");
+    
+        trigger_error($error_message, E_USER_NOTICE);
         
   
 	}
