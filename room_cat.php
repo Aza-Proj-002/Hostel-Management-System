@@ -6,7 +6,7 @@
 ?> 
 
 <?php
-
+ 
 while($row = mysqli_fetch_array($result)) {
 ?>
 <option value="">Select Room Number</option>
@@ -18,6 +18,7 @@ while($row = mysqli_fetch_array($result)) {
 $result = mysqli_query($conn,"SELECT * FROM rooms where room_id=$room_fees");
 while($row = mysqli_fetch_array($result)) {
 ?>
+<option value="">Select Room Fees</option>
 	<option value="<?php echo $row["room_id"];?>"><?php echo $row["fees"];?></option>
 <?php
 }

@@ -113,8 +113,8 @@ if(isset($_POST['submit'])){
         
         <div class="form-row">
         <div class="col-md-2 mb-3">
-                <label>Room Type</label>
-                <select class="custom-select" id="RoomType" name="RoomType" required>
+                <label>Room Type</label> 
+                <select class="custom-select" id="RoomType" onchange="document.getElementById('text_content').value=this.options[this.selectedIndex].text" required>
                 <option selected disabled value="">Select Room Type</option>
                 <?php 
                 $result = mysqli_query($conn,"SELECT * FROM rooms");
@@ -123,20 +123,23 @@ if(isset($_POST['submit'])){
                 <option value="<?php echo $row["room_id"];?>"><?php echo $row["room_type"];?></option>
                 <?php } ?>
                 </select>
+                <input type="hidden" name="RoomType"  id="text_content" value="" />
             </div>
             <div class="col-md-2 mb-3">
                 <label>Room Number</label>
-                <select class="custom-select" name="RoomNumber" id="RoomNumber" required>
+                <select class="custom-select" id="RoomNumber" oninput="document.getElementById('text').value=this.options[this.selectedIndex].text" required>
                     <option value="" disabled selected>Choose Room Number</option>
                     <option></option>
                 </select>
+                <input type="hidden" name="RoomNumber" id="text" value="" />
             </div>
             <div class="col-md-2 mb-3">
                 <label>Fees Per Month</label>
-                <select class="custom-select" name="RoomFees" id="RoomFees" required>
+                <select class="custom-select" id="RoomFees" oninput="document.getElementById('textf').value=this.options[this.selectedIndex].text" required>
                     <option value="" disabled selected>Fees Per Month</option>
                     <option></option>
                 </select>
+                <input type="hidden" name="RoomFees" id="textf" value="" />
             </div>
                         
             <div class="col-md-3 mb-3">
@@ -190,8 +193,6 @@ $(document).ready(function() {
 					$("#RoomNumber").html(dataResult);
 				}
 			});
-		
-		
 	});
     $('#RoomNumber').on('change', function() {
 			var room_fees = this.value;
@@ -206,8 +207,6 @@ $(document).ready(function() {
 					$("#RoomFees").html(dataResult);
 				}
 			});
-		
-		
 	});
 });
 

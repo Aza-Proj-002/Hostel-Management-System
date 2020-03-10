@@ -121,16 +121,18 @@ if(isset($_POST['register'])){
                         <input type="hidden" name="coursename"  id="text_content" value="" />
                     </div>
                     <div class="mt3">
-                        <select class="custom-select" id="coursecode" name="coursecode" required>
+                        <select class="custom-select" id="coursecode"  oninput="document.getElementById('code').value=this.options[this.selectedIndex].text" required>
                             <option value="" disabled selected>Course Code</option>
                             <option></option>
                         </select>
+                        <input type="hidden" name="coursecode"  id="code" value="" />
                     </div>
                     <div class="mt3">
-                        <select class="custom-select" id="duration" name="duration" required>
+                        <select class="custom-select" id="duration" oninput="document.getElementById('time').value=this.options[this.selectedIndex].text"  required>
                             <option value="" disabled selected>Course Duration</option>
                             <option></option>
                         </select>
+                        <input type="hidden" name="duration"  id="time" value="" />
                     </div>
                     <div class="mt3 ">
                         <select class=" pa2 ba input-reset hover-bg-black hover-white  w-100 " name="gender" id=""
