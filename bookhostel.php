@@ -13,6 +13,7 @@ if (!isset($_SESSION['email'])) {
 if(isset($_POST['submit'])){
 
     $RoomType = mysqli_real_escape_string($conn,$_POST['RoomType']);
+    
     $RoomNumber = mysqli_real_escape_string($conn,$_POST['RoomNumber']);
     $Duration = mysqli_real_escape_string($conn,$_POST['Duration']);
     $Fees = mysqli_real_escape_string($conn,$_POST['Fees']);
@@ -209,6 +210,7 @@ $(document).ready(function() {
 		
 	});
 });
+
 
 function calculateAmount(val) {
         var feesPerMonth = $("#RoomFees option:selected").text();

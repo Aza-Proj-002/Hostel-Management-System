@@ -160,7 +160,7 @@ if (!isset($_SESSION['email'])) {
 
             ?>
         <form action="studentdetails.php" method="post">
-            <h3 class="text-center f1 fw6 ph0 mh0">Change Password</h3>
+            <h3 class="text-center">Change Password</h3>
             <div class="row d-flex justify-content-center">
                 <?php
 				if(isset($_SESSION['error'])){
