@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
             </a>
         </div>
         <div class="db dtc-l v-mid  w-50-l tc tr-l">
-            <a class="link dim dark-gray f3 dib mr3 mr4-l" href="#" title="User"><?php echo $user['name']; ?> </a>
+            <a class="link dim dark-gray f3 dib mr3 mr4-l" href="studentdetails.php" title="User"><?php echo $user['name']; ?> </a>
             <a class="link dim dark-gray f3 dib mr3 mr4-l" href="logout.php" title="Log Out">Log Out</a>
         </div>
     </nav>
@@ -133,7 +133,7 @@ if(isset($_POST['submit'])){
                 </select>
                 <input type="hidden" name="RoomNumber" id="text" value="" />
             </div>
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2 mb-3"> 
                 <label>Fees Per Month</label>
                 <select class="custom-select" id="RoomFees" oninput="document.getElementById('textf').value=this.options[this.selectedIndex].text" required>
                     <option value="" disabled selected>Fees Per Month</option>

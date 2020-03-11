@@ -12,7 +12,7 @@ while($row = mysqli_fetch_array($result)) {
 <option value="">Select Room Number</option>
 	<option value="<?php echo $row["room_id"];?>"><?php echo $row["room_number"];?></option>
 <?php
-}
+} 
 ?>
 <?php
 $result = mysqli_query($conn,"SELECT * FROM rooms where room_id=$room_fees");
