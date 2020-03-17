@@ -136,7 +136,7 @@ if (!isset($_SESSION['username'])) {
 
                     ?>
 <form action="adminprofile.php" method="post">
-<h3 class="text-center f1 fw6 ph0 mh0">Change Password</h3>
+<h3 class="text-center">Change Password</h3>
     <div class="col-sm-12">
         <div class="row d-flex justify-content-center">
             <?php
