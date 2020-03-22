@@ -1,6 +1,7 @@
 
 
 <?php
+error_reporting(E_ALL^E_WARNING);
 date_default_timezone_set('Africa/Nairobi');
 ob_start();
 session_start();
